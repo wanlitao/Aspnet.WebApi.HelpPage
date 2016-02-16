@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("WebApi.HelpPage")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Aspnet.WebApi.HelpPage")]
+[assembly: AssemblyDescription("HelpPage for Aspnet WebApi not depend on Aspnet MVC")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebApi.HelpPage")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("GreatBillows")]
+[assembly: AssemblyProduct("Aspnet.WebApi.HelpPage")]
+[assembly: AssemblyCopyright("Copyright © GreatBillows 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
