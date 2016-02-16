@@ -1,0 +1,31 @@
+@using System.Web.Http
+@using WebApi.HelpPage.ModelDescriptions
+@model ModelDescription
+
+@{
+    Layout = "_Layout.cshtml";    
+}
+    
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="@ViewBag.HelpRoute">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <h1>@Model.Name</h1>
+    <p>@Model.Documentation</p>
+    <section class="content-wrapper main-content clear-fix">
+        @{            
+            if (Model is ComplexTypeModelDescription)
+            {
+                @Include("ComplexTypeModelDescription.cshtml", (Model as ComplexTypeModelDescription), typeof(ComplexTypeModelDescription))
+            }
+            else if (Model is EnumTypeModelDescription)
+            {
+                @Include("EnumTypeModelDescription.cshtml", (Model as EnumTypeModelDescription), typeof(EnumTypeModelDescription))
+            }            
+        }
+    </section>
+</div>

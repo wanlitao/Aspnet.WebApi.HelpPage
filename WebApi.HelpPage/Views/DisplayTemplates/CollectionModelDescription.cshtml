@@ -1,0 +1,6 @@
+@using WebApi.HelpPage.ModelDescriptions
+@model CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Include("ComplexTypeModelDescription.cshtml", Model.ElementDescription, typeof(ComplexTypeModelDescription))
+}

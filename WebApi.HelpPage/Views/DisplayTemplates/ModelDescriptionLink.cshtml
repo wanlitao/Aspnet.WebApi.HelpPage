@@ -1,0 +1,33 @@
+@using WebApi.HelpPage.ModelDescriptions
+@model ModelDescription
+@{    
+    if (Model is ComplexTypeModelDescription || Model is EnumTypeModelDescription)
+    {
+        if (Model.ModelType == typeof(Object))
+        {
+            @:Object
+        }
+        else
+        {
+            <a href="@ViewBag.HelpRoute/ResourceModel/?modelName=@Model.Name">@Model.Name</a>            
+        }
+    }
+    else if (Model is CollectionModelDescription)
+    {
+        var collectionDescription = Model as CollectionModelDescription;
+        var elementDescription = collectionDescription.ElementDescription;
+        @:Collection of @Include("ModelDescriptionLink.cshtml", elementDescription, typeof(ModelDescription))
+    }
+    else if (Model is DictionaryModelDescription)
+    {
+        @Include("DictionaryModelDescription.cshtml", (Model as DictionaryModelDescription) , typeof(DictionaryModelDescription))
+    }
+    else if (Model is KeyValuePairModelDescription)
+    {
+        @Include("KeyValuePairModelDescription.cshtml", (Model as KeyValuePairModelDescription) , typeof(KeyValuePairModelDescription))
+    }
+    else if (Model is SimpleTypeModelDescription)
+    {
+        @Include("SimpleTypeModelDescription.cshtml", (Model as SimpleTypeModelDescription) , typeof(SimpleTypeModelDescription))
+    }
+}

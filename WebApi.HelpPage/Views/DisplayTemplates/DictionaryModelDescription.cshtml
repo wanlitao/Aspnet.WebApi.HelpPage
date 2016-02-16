@@ -1,0 +1,4 @@
+@using WebApi.HelpPage.ModelDescriptions
+@model DictionaryModelDescription
+Dictionary of @Include("ModelDescriptionLink.cshtml", Model.KeyModelDescription, typeof(ModelDescription)) [key]
+and @Include("ModelDescriptionLink.cshtml", Model.ValueModelDescription, typeof(ModelDescription)) [value]

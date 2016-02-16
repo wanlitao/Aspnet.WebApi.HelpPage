@@ -1,0 +1,69 @@
+﻿@using System.Collections.Generic
+@using System.Web.Http
+@using System.Net.Http.Headers
+@using System.Web.Http.Description
+@using WebApi.HelpPage.Models
+@using WebApi.HelpPage.ModelDescriptions
+@model HelpPageApiModel
+
+@{
+    ApiDescription description = Model.ApiDescription;
+}
+<h1>@description.HttpMethod.Method @description.RelativePath</h1>
+<div>
+    <p>@description.Documentation</p>
+
+    <h2>Request Information</h2>
+
+    <h3>URI Parameters</h3>
+    @Include("Parameters.cshtml", Model.UriParameters, typeof(IList<ParameterDescription>))   
+
+    <h3>Body Parameters</h3>
+
+    <p>@Model.RequestDocumentation</p>
+
+    @if (Model.RequestModelDescription != null)
+    {
+        @Include("ModelDescriptionLink.cshtml", Model.RequestModelDescription, typeof(ModelDescription))
+        if (Model.RequestBodyParameters != null)
+        {
+            @Include("Parameters.cshtml", Model.RequestBodyParameters, typeof(IList<ParameterDescription>))            
+        }
+    }
+    else
+    {
+        <p>None.</p>
+    }
+
+    @if (Model.SampleRequests.Count > 0)
+    {
+        <h3>Request Formats</h3>
+        @Include("Samples.cshtml", Model.SampleRequests, typeof(IDictionary<MediaTypeHeaderValue, object>))        
+    }
+
+    <h2>Response Information</h2>
+
+    <h3>Resource Description</h3>
+
+    <p>@description.ResponseDescription.Documentation</p>
+
+    @if (Model.ResourceDescription != null)
+    {
+        @Include("ModelDescriptionLink.cshtml", Model.ResourceDescription, typeof(ModelDescription))        
+        if (Model.ResourceProperties != null)
+        {
+            @Include("Parameters.cshtml", Model.ResourceProperties, typeof(IList<ParameterDescription>))            
+        }
+    }
+    else
+    {
+        <p>None.</p>
+    }
+
+    @if (Model.SampleResponses.Count > 0)
+    {
+        <h3>Response Formats</h3>
+        @Include("Samples.cshtml", Model.SampleResponses, typeof(IDictionary<MediaTypeHeaderValue, object>))       
+    }
+
+</div>

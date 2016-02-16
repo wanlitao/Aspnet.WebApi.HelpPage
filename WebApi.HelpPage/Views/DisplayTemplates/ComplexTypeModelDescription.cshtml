@@ -1,0 +1,3 @@
+@using WebApi.HelpPage.ModelDescriptions
+@model ComplexTypeModelDescription
+@Include("Parameters.cshtml", Model.Properties, typeof(IList<ParameterDescription>))
